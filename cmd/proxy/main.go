@@ -405,7 +405,6 @@ func configure(pattern string, handler http.Handler) {
 	// local API server
 	http.Handle(path.Join(*api, pattern), handler)
 
-	// register handler for local API server
-	p := path.Join("localhost"+*apiAddr, pattern)
-	http.Handle(p, handler)
+	// register handler for API server
+	http.Handle(pattern, handler)
 }
